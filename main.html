@@ -7,25 +7,39 @@
 </head>
 
 <body>	
-	<script>
-		function secondHighest(arr) {
-			//Write your code here
-			
-		}
+<script>
+    function secondHighest(arr) {
+        if (arr.length < 2 || new Set(arr).size === 1) {
+            return -Infinity;
+        }
 
-		function Main() {
-			var n = prompt("Enter the number of elements");
-			var arr = [];
-			for (var i = 0; i < n; i++) {
-				arr[i] = prompt("Enter element " + (i+1));
-			}
-			alert(secondHighest(arr));
-		}
-		Main();
-	</script>
+        let max = -Infinity;
+        let secondMax = -Infinity;
 
-    <script type="text/javascript" src="./script.js">
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > max) {
+                secondMax = max;
+                max = arr[i];
+            } else if (arr[i] > secondMax && arr[i] < max) {
+                secondMax = arr[i];
+            }
+        }
+
+        return secondMax;
+    }
+
+    function Main() {
+        var n = prompt("Enter the number of elements");
+        var arr = [];
+        for (var i = 0; i < n; i++) {
+            arr[i] = parseInt(prompt("Enter element " + (i + 1))); // Convert input to integers
+        }
+        alert(secondHighest(arr));
+    }
+
+    Main();
 </script>
+
 
 </body>
 
